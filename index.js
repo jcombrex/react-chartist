@@ -32,17 +32,18 @@ class ChartistGraph extends Component {
     let event;
 
     if (this.chartist) {
-      this.chartist.update(data, options, responsiveOptions);
+        //this.chartist.update(data, options, responsiveOptions);
+        this.chartist = new Chartist[type](this.refs.chart, data, options, responsiveOptions);
     } else {
-      this.chartist = new Chartist[type](this.refs.chart, data, options, responsiveOptions);
+        this.chartist = new Chartist[type](this.refs.chart, data, options, responsiveOptions);
 
-      if (config.listener) {
-        for (event in config.listener) {
-          if (config.listener.hasOwnProperty(event)) {
-            this.chartist.on(event, config.listener[event]);
-          }
+        if (config.listener) {
+            for (event in config.listener) {
+                if (config.listener.hasOwnProperty(event)) {
+                    this.chartist.on(event, config.listener[event]);
+                }
+            }
         }
-      }
     }
 
     return this.chartist;
